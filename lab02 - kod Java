@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+class Player {
+    String name;
+    Integer healthPoints = 100;
+    String title;
+    boolean online;
+
+    public Player(String name, String title, boolean online) {
+        this.name = name;
+        this.title = title;
+        this.online = online;
+    }
+
+    public String identify() {
+        if (title != null) {
+            return "[" + healthPoints + "] | " + title + " " + name;
+        } else {
+            return "[" + healthPoints + "] | " + name;
+        }
+    }
+}
+
+java.util.ArrayList;
+import java.util.Random;
+
+public class Main {
+    public static String getRandomName() {
+        String[] names = {"Bolek", "Lolek", "Reksio", "Pat", "Mat", "Gargamel", "Papa_Smerf", "Smerfetka", "Gumis"};
+        Random random = new Random();
+        int randomIndex = random.nextInt(names.length);
+        return names[randomIndex];
+    }
+    public static String getRandomTitle() {
+        String[] titles = {"Iron", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grandmaster", "Challenger"};
+        ;
+        Random random = new Random();
+        int randomIndex = random.nextInt(titles.length);
+        return titles[randomIndex];
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Player> players = new ArrayList<>();
+
+
+        for (int i = 0; i < 30; i++) {
+            String randomName = getRandomName();
+            String randomTitle = (new Random().nextBoolean()) ? getRandomTitle() : null;
+            boolean onlineStatus = new Random().nextBoolean();
+            Player player = new Player(randomName, randomTitle, onlineStatus);
+            players.add(player);
+        }
+
+        System.out.println("Aktywni gracze:");
+        for (Player player : players) {
+            if (player.online) {
+                System.out.println(player.identify());
+            }
+        }
+    }
